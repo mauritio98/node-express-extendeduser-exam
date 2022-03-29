@@ -1,0 +1,70 @@
+POST http://localhost:3000/users/register 
+Content-Type: application/json
+
+{
+"username":"spyder@dominio.es", "password":"Go1&567890"
+}
+
+####
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+"username":"spyder@dominio.es", "password":"man"
+}
+####
+POST http://localhost:3000/users/register 
+Content-Type: application/json
+
+{
+"username":"hawkeye@dominio.es", "password":"man"
+}
+
+
+####
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+"username":"batman@dominio.es", "password":"man"
+}
+
+####
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+"username":"peter@dominio.es", "password":"pan"
+}
+
+###pasar usuario
+GET http://localhost:3000/users/spyder@dominio.es
+
+Retornar:
+
+{
+  "username": "spyder@dominio.es",
+  "timestamp": "2022-03-27T19:15:12.950Z",
+}
+
+###privilegios a usuario ya existente
+POST http://localhost:3000/users/grants
+Content-Type: application/json
+
+{
+"username":"peter@dominio.es", "grants":["create_database","create_role","create_table","create_view"]
+}
+###eliminar privilegios usuario
+DELETE http://localhost:3000/users/grants
+Content-Type: application/json
+
+{
+"username":"peter@dominio.es", "grants":["create_database"]
+}
+###añadir uno o mas pivilegios a usuario existente
+PUT http://localhost:3000/users/grants
+Content-Type: application/json
+
+{
+"username":"peter@dominio.es", "grants":["create_user","alter_table"]
+}
